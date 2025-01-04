@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id('Employee_Id')->primary();
             $table->string('Name');
             $table->string('Email')->unique();
             $table->string('Password');
@@ -21,15 +21,16 @@ return new class extends Migration
             $table->string('Nationality');
             $table->string('Department');
             $table->string('Position');
-            $table->decimal('Salary', 8, 3);
+            $table->decimal('Salary', 12, 3);
+            $table->string('Payment_Currency');
             $table->date('Hiring_Date');
             $table->date('Birth_Date');
             $table->integer('Age');
             $table->integer('Working_Hours');
             $table->integer('Vacation_Days');
             $table->string('Description');
-            $table->boolean('Admin');
-            $table->boolean('SuperAdmin');
+            $table->boolean('Admin')->default(false);
+            $table->boolean('SuperAdmin')->default(false);
             $table->timestamps();
         });
     }

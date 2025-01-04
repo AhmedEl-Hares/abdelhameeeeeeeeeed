@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('guides', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id('Guide_Id')->primary();
             $table->string('Name');
             $table->string('Email')->unique();
             $table->string('Password');
@@ -22,11 +22,11 @@ return new class extends Migration
             $table->string('License_Number')->unique();
             $table->json('Languages');
             $table->decimal('Fees', 12, 3);
-            $table->string('payment_currency');
-            $table->string('payment_method');
+            $table->string('Payment_currency');
+            $table->string('Payment_method');
             $table->longText('Description');
-            $table->boolean('VIP')->byDefault(false);
-            $table->json('Available',date('d-m-Y'));
+            $table->boolean('VIP')->default(false);
+            $table->json('Available_Dates');
             $table->timestamps();
         });
     }

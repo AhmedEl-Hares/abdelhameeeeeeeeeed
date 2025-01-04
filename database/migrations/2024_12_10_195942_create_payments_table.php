@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('payments', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->id('Tourist_id')->foreign('Tourist_id')->references('id')->on('tourists');
-            $table->id('tour_id')->foreign('tour_id')->references('id')->on('tours');
+            $table->id('Payment_Id')->primary();
+            $table->id('Tourist_Id')->foreign('Tourist_Id')->references('Tourist_Id')->on('tourists');
+            $table->id('Tour_Id')->foreign('Tour_Id')->references('Tour_Id')->on('tours');
             $table->decimal('Amount', 12, 3);
-            $table->string('Payment_Method')->nullable();
+            $table->string('Payment_Method');
             $table->string('Payment_Status'); // Pending, Paid, Refunded, voided
             $table->string('Payment_Currency');
             $table->dateTime('Date');

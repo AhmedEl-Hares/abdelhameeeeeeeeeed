@@ -12,17 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tours', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id('Tour_Id')->primary();
             $table->string('Name');
-            $table->id('Tourist_id')->foreign('Tourist_id')->references('id')->on('tourists');
-            $table->id('Guide_id')->foreign('Guide_id')->references('id')->on('guides');
-            $table->string('status')->byDefault('Pending'); //Pending, Approved, Rejected
-            $table->string('transportation');
-            $table->integer('Number_of_Adults')->byDefault(1);
+            $table->id('Tourist_Id')->foreign('Tourist_id')->references('Tourist_Id')->on('tourists');
+            $table->id('Guide_Id')->foreign('Guide_id')->references('Guide_Id')->on('guides');
+            $table->string('Status')->default('Pending'); //Pending, Approved, Rejected
+            $table->id('Transportation_Id')->foreign('Transportation_Id')->references('Transportation_Id')->on('transportations');
+            $table->integer('Number_of_Adults')->default(1);
             $table->integer('Number_of_kids')->nullable();
             $table->date('Date');
-            $table->string('Start_Time');
-            $table->string('End_Time');
+            $table->time('Start_Time');
+            $table->time('End_Time');
             $table->json('Locations');
         });
     }

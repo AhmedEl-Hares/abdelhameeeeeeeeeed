@@ -12,19 +12,24 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('services', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id('Service_Id')->primary();
             $table->string('Name');
+            $table->string('Username')->unique();
+            $table->string('password');
+            $table->string('Type'); // restaurant, cafes, others R, C, O
             $table->string('Address');
             $table->string('City');
             $table->string('Country');
             $table->time('Opening_Time');
             $table->time('Closing_Time');
-            $table->decimal('minimum_charge', 12, 3)->nullable();
-            $table->string('Type'); // restaurant, cafes, others
+            $table->decimal('Minimum_Charge', 12, 3)->nullable();
+            $table->decimal('Commission', 1, 3);
             $table->longText('Description');
-            $table->string('thumbnail')->unique();
-            $table->json('videos');
-            $table->json('images');
+            $table->decimal('Average_Rating', 1, 1);
+            $table->json('Available_Dates');
+            $table->string('Thumbnail')->unique();
+            $table->json('Videos');
+            $table->json('Images');
         });
     }
 

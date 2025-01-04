@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('feedback', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->id('Tour_id')->foreign('Tour_id')->references('id')->on('tours');
-            $table->id('Guide_id')->foreign('Guide_id')->references('id')->on('guides');
-            $table->integer('Tour_Rating');
-            $table->integer('Guide_Rating');
+            $table->id('Feedback_Id')->primary();
+            $table->id('Tour_id')->foreign('Tour_id')->references('Tour_Id')->on('tours');
+            $table->id('Guide_id')->foreign('Guide_id')->references('Guide_Id')->on('guides');
+            $table->decimal('Tour_Rating', 1, 1);
+            $table->decimal('Guide_Rating', 1, 1);
             $table->longText('Tour_Comment');
             $table->timestamps();
         });
