@@ -22,10 +22,6 @@ return new class extends Migration
             $table->string('Type'); // Bus, Car, Minibus. B, C, M
             $table->integer('Car_Max_Capacity');
             $table->string('Car_License_Number');
-
-            // Define foreign keys
-            $table->foreign('Tour_id')->references('Tour_Id')->on('tours')->onDelete('cascade');
-        });
         });
     }
 

@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('Status')->default('Pending'); //Pending, Approved, Rejected
             $table->integer('Number_of_Adults')->default(1);
             $table->integer('Number_of_kids')->nullable();
+            $table->unsignedBigInteger('Tourist_Id');
+            $table->unsignedBigInteger('Guide_Id');
+            $table->unsignedBigInteger('Transportation_Id');
             $table->date('Date');
             $table->time('Start_Time');
             $table->time('End_Time');
@@ -24,9 +27,8 @@ return new class extends Migration
 
             // Define foreign keys
             $table->foreign('Tourist_Id')->references('Tourist_Id')->on('tourists')->onDelete('cascade');
-            $table->foreign('Guide_id')->references('Guide_Id')->on('guides')->onDelete('cascade');
-            $table->foreign('Transportation_Id')->references('Transportation_Id')->on('transportations')->onDelete('cascade');
-        });
+            $table->foreign('Guide_Id')->references('Guide_Id')->on('guides')->onDelete('cascade');
+            $table->foreign('Transportation_Id')->references('Transportation_ID')->on('transportations')->onDelete('cascade');
         });
     }
 

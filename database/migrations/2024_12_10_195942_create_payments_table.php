@@ -17,12 +17,13 @@ return new class extends Migration
             $table->string('Payment_Method');
             $table->string('Payment_Status'); // Pending, Paid, Refunded, voided
             $table->string('Payment_Currency');
+            $table->unsignedBigInteger('Tourist_Id');
+            $table->unsignedBigInteger('Tour_Id');
             $table->dateTime('Date');
 
              // Define foreign keys
             $table->foreign('Tourist_Id')->references('Tourist_Id')->on('tourists')->onDelete('cascade');
             $table->foreign('Tour_Id')->references('Tour_Id')->on('tours')->onDelete('cascade');
-        });
         });
     }
 
