@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id('Payment_Id')->primary();
-            $table->id('Tourist_Id')->foreign('Tourist_Id')->references('Tourist_Id')->on('tourists');
-            $table->id('Tour_Id')->foreign('Tour_Id')->references('Tour_Id')->on('tours');
             $table->decimal('Amount', 12, 3);
             $table->string('Payment_Method');
             $table->string('Payment_Status'); // Pending, Paid, Refunded, voided
             $table->string('Payment_Currency');
             $table->dateTime('Date');
+
+             // Define foreign keys
+            $table->foreign('Tourist_Id')->references('Tourist_Id')->on('tourists')->onDelete('cascade');
+            $table->foreign('Tour_Id')->references('Tour_Id')->on('tours')->onDelete('cascade');
+        });
         });
     }
 
