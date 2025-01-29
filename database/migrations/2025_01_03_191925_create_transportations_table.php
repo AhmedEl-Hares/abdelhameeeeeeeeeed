@@ -14,7 +14,6 @@ return new class extends Migration
     {
         Schema::create('transportations', function (Blueprint $table) {
             $table->id('Transportation_ID')->primary();
-            $table->id('Tour_Id')->foreign('Tour_Id')->references('Tour_Id')->on('tours');
             $table->string('Driver_Name');
             $table->string('Personal_License_Number');
             $table->string('Driver_National_Id');
@@ -23,6 +22,10 @@ return new class extends Migration
             $table->string('Type'); // Bus, Car, Minibus. B, C, M
             $table->integer('Car_Max_Capacity');
             $table->string('Car_License_Number');
+
+            // Define foreign keys
+            $table->foreign('Tour_id')->references('Tour_Id')->on('tours')->onDelete('cascade');
+        });
         });
     }
 
